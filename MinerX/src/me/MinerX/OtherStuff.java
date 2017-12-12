@@ -22,7 +22,7 @@ public class OtherStuff {
 
 		final String userAgent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12";
 		try {
-			URL url = new URL("http://api.feathercoin.com/?output=usd&amount=1&json=0");
+			URL url = new URL("https://api.coinmarketcap.com/v1/ticker/trezarcoin/");
 			URLConnection conn = url.openConnection();
 			conn.addRequestProperty("User-Agent", userAgent);
 
@@ -51,7 +51,7 @@ public class OtherStuff {
 
 		final String userAgent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12";
 		try {
-			URL url = new URL("http://api.feathercoin.com/?output=stats");
+			URL url = new URL("https://explorer.trezarcoin.com/api/getdifficulty");
 			URLConnection conn = url.openConnection();
 			conn.addRequestProperty("User-Agent", userAgent);
 
@@ -60,7 +60,7 @@ public class OtherStuff {
 			String difficulty = " ";
 			String[] parts = split.split(",");
 			for(int i=0;i<parts.length;i++){
-				if(parts[i].contains("nowdiff")){
+				if(parts[i].contains("proof-of-work")){
 					difficulty = parts[i];
 					difficulty = difficulty.substring(10, 17);
 				}
@@ -91,7 +91,7 @@ public class OtherStuff {
 			java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
 
 			if(desktop.isSupported(java.awt.Desktop.Action.BROWSE) ) {
-				java.net.URI uri = new java.net.URI("http://p2pool.neoscrypt.de:19327");
+				java.net.URI uri = new java.net.URI("https://altminer.net/site/mining");
 				desktop.browse(uri);
 			}
 		} 

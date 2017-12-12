@@ -36,7 +36,7 @@ public class Main
 	{
 		frame1 = new Frame1();
 		frame1.setDefaultCloseOperation(3);
-		URL imageURL2 = Main.class.getResource("/Mining.png");
+		URL imageURL2 = Main.class.getResource("/TrezarCoin.1.png");
 		img = null;
 		if (imageURL2 != null) {
 			img = new ImageIcon(imageURL2);

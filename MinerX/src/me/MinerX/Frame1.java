@@ -45,7 +45,7 @@ extends JFrame
 	private JTextField ExperModeField;
 	private JCheckBox ExpertModeCheckBox;
 	private JRadioButton expertamd, experenv;
-	public static final String version = "Version 4.0";
+	public static final String version = "TestVersion TZC 1.0";
 	public Font ftdefault = new Font("Times New Roman", Font.BOLD, 22);
 	//public Font dogedefault = new Font("Comic Sans MS", Font.BOLD, 18);
 	public Font normal = new Font("Times New Roman", Font.BOLD, 20);
@@ -82,7 +82,7 @@ extends JFrame
 		experenv.setBackground(Color.WHITE);
 		add(experenv);
 		
-		choosereurope = new JRadioButton("Europe",ResourceLoader.Iconload("/checkbox.png"));
+		choosereurope = new JRadioButton("Altminer.net",ResourceLoader.Iconload("/checkbox.png"));
 		choosereurope.setBounds(645,250,100, 20);
 		choosereurope.setSelectedIcon(ResourceLoader.Iconload("/checkbox_checked.png"));
 		choosereurope.setVisible(true);
@@ -95,7 +95,7 @@ extends JFrame
 		choosereuropeone = new JRadioButton("US",ResourceLoader.Iconload("/checkbox.png"));
 		choosereuropeone.setBounds(645,270,100, 20);
 		choosereuropeone.setSelectedIcon(ResourceLoader.Iconload("/checkbox_checked.png"));
-		choosereuropeone.setVisible(true);
+		choosereuropeone.setVisible(false);
 		choosereuropeone.setEnabled(true);
 		choosereuropeone.setOpaque(false);
 		choosereuropeone.setBackground(Color.WHITE);
@@ -104,7 +104,7 @@ extends JFrame
 		
 		chooserchina = new JRadioButton("China",ResourceLoader.Iconload("/checkbox.png"));
 		chooserchina.setBounds(645,290,100, 20);
-		chooserchina.setVisible(true);
+		chooserchina.setVisible(false);
 		chooserchina.setSelectedIcon(ResourceLoader.Iconload("/checkbox_checked.png"));
 		chooserchina.setEnabled(true);
 		chooserchina.setOpaque(false);
@@ -118,8 +118,8 @@ extends JFrame
 		
 		ButtonGroup chose = new ButtonGroup();
 		chose.add(choosereurope);
-		chose.add(chooserchina);
-		chose.add(choosereuropeone);
+		//chose.add(chooserchina);
+		//chose.add(choosereuropeone);
 
 		Series = new JTextField("Getting Grafik Card Series ...", 30);
 		Series.setEditable(false);
@@ -151,6 +151,7 @@ extends JFrame
 
 		CoinCalc = new JButton(ResourceLoader.Iconload("/250x50_button_calc.png"));
 		CoinCalc.setBounds(503, 106, 250, 50);
+		CoinCalc.setVisible(false);
 		add(this.CoinCalc);
 
 		Walletaddress = new JTextField("@Walletaddress", 30);
@@ -191,7 +192,7 @@ extends JFrame
 		ExpertModeCheckBox.setOpaque(false);
 		ExpertModeCheckBox.setFont(normal);
 		ExpertModeCheckBox.setText("Expert Mode");
-		add(ExpertModeCheckBox);
+		//add(ExpertModeCheckBox);
 
 		ExperModeField = new JTextField("sgminer --neoscrypt -o http://...", 20);
 		ExperModeField.setBounds(58, 202, 700, 25);
@@ -275,46 +276,46 @@ extends JFrame
 						return;
 					}
 				}
-				else if (Main.GrakaSeries.contains("AMD"))
+				/*else if (Main.GrakaSeries.contains("AMD"))
 					if(choosereurope.isSelected() == true){
 						
 						
-							Main.Batchfile = "nsgminer --neoscrypt -o p2pool.neoscrypt.de:19327 -u " + Walletaddress.getText().toString() + " -p x " + (String)Specs.AMDNeo.get(ExactName.getText().toString());
+							Main.Batchfile = "ccminer.exe -a neoscrypt -o stratum+tcp://eu1.altminer.net:4233 -u " + Walletaddress.getText().toString() + " -p c=PXC " + (String)Specs.AMDNeo.get(ExactName.getText().toString());
 							folderpath = "Neosgminer";
 					}
 				
 					else if(choosereuropeone.isSelected() == true){
 						
-							Main.Batchfile = "nsgminer --neoscrypt -o http://104.236.34.9:19327 -u" + Walletaddress.getText().toString() + " -p x " + (String)Specs.AMDNeo.get(ExactName.getText().toString()); 
+							Main.Batchfile = "nsgminer --neoscrypt -o  -u" + Walletaddress.getText().toString() + " -p x " + (String)Specs.AMDNeo.get(ExactName.getText().toString()); 
 							folderpath = "Neosgminer";
 					}
 						
 						else{
 							
-							Main.Batchfile = "nsgminer --neoscrypt -o http://pool.ftc-c.com:19327 -u " + Walletaddress.getText().toString() + " -p x " + (String)Specs.AMDNeo.get(ExactName.getText().toString());
+							Main.Batchfile = "nsgminer --neoscrypt -o 7 -u " + Walletaddress.getText().toString() + " -p x " + (String)Specs.AMDNeo.get(ExactName.getText().toString());
 							folderpath = "Neosgminer";
 							
-						}
+						}*/
 			
 				
 					 
 				else if (Main.GrakaSeries.contains("NVIDIA"))
 					if(choosereurope.isSelected() == true){
 						
-						Main.Batchfile = "nsgminer --neoscrypt -o p2pool.neoscrypt.de:19327 -u " + Walletaddress.getText().toString() + " -p x " + (String)Specs.NVIDIANeo.get(ExactName.getText().toString());
-						folderpath = "Neosgminer";
+						Main.Batchfile = "ccminer.exe -a neoscrypt -o stratum+tcp://eu1.altminer.net:4233  -u " + Walletaddress.getText().toString() + " -p c=PXC ";
+						folderpath = "CCminer";
 						
 					}
 				
 					else if(choosereuropeone.isSelected() == true){
 						
-						Main.Batchfile = "nsgminer --neoscrypt -o http://104.236.34.9:19327 -u " + Walletaddress.getText().toString() + " -p x " + (String)Specs.NVIDIANeo.get(ExactName.getText().toString());
-						folderpath = "Neosgminer";
+						Main.Batchfile = "ccminer.exe -a neoscrypt -o  -u " + Walletaddress.getText().toString() + " -p c=TZC ";
+						folderpath = "CCminer";
 						
 					}
 					else{
-						Main.Batchfile = "nsgminer --neoscrypt -o http://pool.ftc-c.com:19327 -u " + Walletaddress.getText().toString() + " -p x " + (String)Specs.NVIDIANeo.get(ExactName.getText().toString());
-						folderpath = "Neosgminer";
+						Main.Batchfile = "ccminer.exe -a neoscrypt -o  -u " + Walletaddress.getText().toString() + " -p c=TZC ";
+						folderpath = "CCminer";
 					}
 
 				try { 
@@ -410,7 +411,7 @@ extends JFrame
 					choosereurope.setEnabled(true);
 					chooserchina.setEnabled(true);
 					choosereuropeone.setEnabled(true);
-					ExperModeField.setText("sgminer -k neoscrypt -o http://...");
+					//ExperModeField.setText("sgminer -k neoscrypt -o http://...");
 				}
 			}
 		}
@@ -433,11 +434,11 @@ extends JFrame
 				ExperModeField.setFont(normal);
 			
 				g.drawImage(ResourceLoader.ImageLoad("/background.png"), 0, 0, null);
-				g.drawImage(ResourceLoader.ImageLoad("/xminer_logo_neoscrypt.png"),321,50,null);
+				g.drawImage(ResourceLoader.ImageLoad("/TrezarMiner.png"),280,50,null);
 				g.drawImage(ResourceLoader.ImageLoad("/input_bar.png"),241, 256,null);
 				g.drawImage(ResourceLoader.ImageLoad("/status_text_bg3.png"),53,36,null);
 				g.drawImage(ResourceLoader.ImageLoad("/status_text_bg3.png"),53,106,null);
-				g.drawString(version,735,500);
+				g.drawString(version,680,490);
 				g.setFont(ftdefault);
 				
 			if(ExpertModeCheckBox.isSelected() == true){
@@ -445,15 +446,15 @@ extends JFrame
 			}
 				
 				if(OtherStuff.pFTCPriceinUSDisPulled == true){
-					g.drawString(OtherStuff.pFTCPriceinUSD, 575, 400);
+					//g.drawString(OtherStuff.pFTCPriceinUSD, 575, 400);
 				}else{
-					g.drawString("Fetching USD Price...", 570, 400);
+					//g.drawString("Fetching USD Price...", 570, 400);
 				}
 				
 				if(OtherStuff.pFTCDiff != null && OtherStuff.pFTCDiff != "null"){
-					g.drawString(OtherStuff.pFTCDiff, 575, 430);
+					//g.drawString(OtherStuff.pFTCDiff, 575, 430);
 				}else{
-					g.drawString("Fetching difficulty...", 570, 430);
+					//g.drawString("Fetching difficulty...", 570, 430);
 				}
 				
 						

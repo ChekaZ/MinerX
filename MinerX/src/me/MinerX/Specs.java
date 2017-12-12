@@ -53,6 +53,7 @@ public class Specs
 		AMDNeo.put("AMD Radeon R9 280x", "-g 1 -w 128 -I 16 --gpu-platform 1 --gpu-engine 950 --gpu-memclock 1500");
 		AMDNeo.put("AMD Radeon R9 290", "-g 1 -w 128 -I 16 --gpu-platform 1 --gpu-engine 950 --gpu-memclock 1500");
 		AMDNeo.put("AMD Radeon R9 290x", "-g 1 -w 128 -I 16 --gpu-platform 1 --gpu-engine 950 --gpu-memclock 15000");
+		AMDNeo.put("Intel(R) HD Graphics 4600", "-g1 -w 128 -I 16");
 		
 		NVIDIANeo.put("NVIDIA GeForce GTX 760","-I 13 -w 128");
 		NVIDIANeo.put("NVIDIA GeForce GTX 780 Ti","-I 13 -w 128");
@@ -87,7 +88,8 @@ public class Specs
 		NVIDIANeo.put("NVIDIA GeForce GTX 750 Ti","-w 128 -l 15 -g 1 -I 17");
 		NVIDIANeo.put("NVIDIA GeForce GTX 770","-I 18 -w 128 -g 1");
 		NVIDIANeo.put("NVIDIA GeForce GTX 1070","-I 14 -w 128");
-		NVIDIANeo.put("NVIDIA GeForce GTX 1070","-I 14 -w 128");
+		NVIDIANeo.put("NVIDIA GeForce GTX 1080","-I 14 -w 128");
 		NVIDIANeo.put("NVIDIA GeForce GTX TITAN","-w 128 -I 14");
+		NVIDIANeo.put("Intel(R) HD Graphics 4600", "-w 128 -I 16");
 	}
 }
