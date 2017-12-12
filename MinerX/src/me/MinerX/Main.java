@@ -41,11 +41,11 @@ public class Main
 		if (imageURL2 != null) {
 			img = new ImageIcon(imageURL2);
 		}
-		frame1.setIconImage(img.getImage());
+		//frame1.setIconImage(img.getImage());
 		frame1.setVisible(true);
 		
 		Specs.initSpecs();
-		try {
+		/*try {
 			for(int i = 0; i<=2; i++){
 				
 				website=OtherStuff.checkURL(webnames[i]);
@@ -63,13 +63,13 @@ public class Main
 					}
 						
 				}
-			}
+			}*/
 				
 			OtherStuff.getFTCPriceUSD();
 			OtherStuff.getFTCDiff();
-		} catch (MalformedURLException e1) {
-			e1.printStackTrace();
-		}
+		//} catch (MalformedURLException e1) {
+		//	e1.printStackTrace();
+		//}
 		
 		timer = new Timer(10, new ActionListener()
 		{
@@ -89,7 +89,8 @@ public class Main
 
 			BufferedReader br = new BufferedReader(new FileReader(filePath));
 			String line;
-			while ((line = br.readLine()) != null)
+			boolean specfound = false;
+			while (((line = br.readLine()) != null) && !specfound)
 			{
 				if (((line.trim().startsWith("Card name:")) || (line.trim().startsWith("Current Mode:"))) && 
 						(line.trim().startsWith("Card name:")))
@@ -98,6 +99,7 @@ public class Main
 					frame1.Series.setText(GrakaSeries);
 					frame1.ExactName.setText(GrakaSeries.replace(" Series", ""));
 					frame1.ExactName.setEditable(true);
+					specfound = true;
 				}
 			}
 			br.close();

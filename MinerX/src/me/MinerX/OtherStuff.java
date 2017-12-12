@@ -25,15 +25,20 @@ public class OtherStuff {
 			URL url = new URL("https://api.coinmarketcap.com/v1/ticker/trezarcoin/");
 			URLConnection conn = url.openConnection();
 			conn.addRequestProperty("User-Agent", userAgent);
-
 			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			String str, str1; 
-			str = new String();
-			while ((str1 = in.readLine()) != null) {
-				str = str + str1;
+			String str = "";
+			String pricefinal = "";
+			boolean findprice = false;
+			while (((str = in.readLine()) != null ) && !findprice) {
+				if(str.contains("price_usd")){
+					pricefinal = str.trim().replace("\"price_usd\": \"","");
+					pricefinal = pricefinal.trim().replace("\",","");
+					findprice = true;
+					System.out.println(pricefinal);
+				}
 			} 
 			in.close(); 
-			pFTCPriceinUSD ="1 FTC = "+ str + "$";
+			pFTCPriceinUSD ="1 TZC = "+ pricefinal + "$";
 
 		} catch (MalformedURLException e) 
 		{
@@ -51,22 +56,22 @@ public class OtherStuff {
 
 		final String userAgent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12";
 		try {
-			URL url = new URL("https://explorer.trezarcoin.com/api/getdifficulty");
+			URL url = new URL("http://tzc.explorerz.top:3004/api/getdifficulty");
 			URLConnection conn = url.openConnection();
 			conn.addRequestProperty("User-Agent", userAgent);
-
+			String split = "";
+			boolean diff = false;
+			String difficulty = "";
 			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			String split = in.readLine();
-			String difficulty = " ";
-			String[] parts = split.split(",");
-			for(int i=0;i<parts.length;i++){
-				if(parts[i].contains("proof-of-work")){
-					difficulty = parts[i];
-					difficulty = difficulty.substring(10, 17);
+			while(((split = in.readLine()) != null) && !diff){
+				if(split.contains("proof-of-work")){
+					difficulty = split.trim().replace("\"proof-of-work\":","");
+					difficulty = difficulty.trim().replace(",","");
+					diff = true;
 				}
 			}
 			in.close(); 
-			pFTCDiff ="Difficulty = "+ difficulty;
+			pFTCDiff ="Difficulty: "+ difficulty;
 		} catch (MalformedURLException e) 
 		{
 		} 
@@ -113,7 +118,7 @@ public class OtherStuff {
 			java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
 
 			if(desktop.isSupported(java.awt.Desktop.Action.BROWSE) ) {
-				java.net.URI uri = new java.net.URI("http://Feathercoin.com/calc/");
+				java.net.URI uri = new java.net.URI("https://whattomine.com");
 				desktop.browse(uri);
 			}
 		} 

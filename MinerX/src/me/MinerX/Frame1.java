@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 
 
 public class Frame1
@@ -149,9 +150,9 @@ extends JFrame
 		PoolInfo.setBounds(503, 36, 250, 50);
 		add(this.PoolInfo);
 
-		CoinCalc = new JButton(ResourceLoader.Iconload("/250x50_button_calc.png"));
+		CoinCalc = new JButton("Trezarcoin Calculator");
 		CoinCalc.setBounds(503, 106, 250, 50);
-		CoinCalc.setVisible(false);
+		CoinCalc.setVisible(true);
 		add(this.CoinCalc);
 
 		Walletaddress = new JTextField("@Walletaddress", 30);
@@ -192,7 +193,8 @@ extends JFrame
 		ExpertModeCheckBox.setOpaque(false);
 		ExpertModeCheckBox.setFont(normal);
 		ExpertModeCheckBox.setText("Expert Mode");
-		//add(ExpertModeCheckBox);
+		ExpertModeCheckBox.setVisible(false);
+		add(ExpertModeCheckBox);
 
 		ExperModeField = new JTextField("sgminer --neoscrypt -o http://...", 20);
 		ExperModeField.setBounds(58, 202, 700, 25);
@@ -262,7 +264,7 @@ extends JFrame
 		{
 			if (e.getSource() == StartMining)
 			{
-				if(Main.ExpertMode == true){
+				/*if(Main.ExpertMode == true){
 					if(ExperModeField.getText().contains("nsgminer") && ExperModeField.getText().contains("-u")){
 						
 						Main.Batchfile = ExperModeField.getText();
@@ -276,7 +278,7 @@ extends JFrame
 						return;
 					}
 				}
-				/*else if (Main.GrakaSeries.contains("AMD"))
+				else if (Main.GrakaSeries.contains("AMD"))
 					if(choosereurope.isSelected() == true){
 						
 						
@@ -295,7 +297,7 @@ extends JFrame
 							Main.Batchfile = "nsgminer --neoscrypt -o 7 -u " + Walletaddress.getText().toString() + " -p x " + (String)Specs.AMDNeo.get(ExactName.getText().toString());
 							folderpath = "Neosgminer";
 							
-						}*/
+						}
 			
 				
 					 
@@ -316,7 +318,12 @@ extends JFrame
 					else{
 						Main.Batchfile = "ccminer.exe -a neoscrypt -o  -u " + Walletaddress.getText().toString() + " -p c=TZC ";
 						folderpath = "CCminer";
-					}
+					}*/
+				
+				if(choosereuropeone.isSelected() == true){
+					Main.Batchfile = "ccminer.exe -a neoscrypt -o stratum+tcp://eu1.altminer.net:10002 -u " + Walletaddress.getText().toString() + " -p c=PXC ";
+					folderpath = "CCminer";
+				}
 
 				try { 
 					writer = new PrintWriter(new FileWriter(System.getProperty("user.dir")+"\\"+folderpath+"\\mine.bat")); 
@@ -332,7 +339,7 @@ extends JFrame
 				try {
 
 					Process process2=Runtime.getRuntime().exec("cmd /c start "+System.getProperty("user.dir")+"\\"+folderpath + "\\mine.bat",
-							null, new File(System.getProperty("user.dir")+"\\"+folderpath));
+							null, new File("\"" + System.getProperty("user.dir")+"\"\\"+folderpath));
 					process2.waitFor();
 				} catch (IOException | InterruptedException e1) {
 					e1.printStackTrace();
@@ -431,7 +438,7 @@ extends JFrame
 				ExpertModeCheckBox.setFont(normal);
 				Walletaddress.setFont(normal);
 				StartMining.setFont(normal);
-				ExperModeField.setFont(normal);
+				//ExperModeField.setFont(normal);
 			
 				g.drawImage(ResourceLoader.ImageLoad("/background.png"), 0, 0, null);
 				g.drawImage(ResourceLoader.ImageLoad("/TrezarMiner.png"),280,50,null);
@@ -446,15 +453,15 @@ extends JFrame
 			}
 				
 				if(OtherStuff.pFTCPriceinUSDisPulled == true){
-					//g.drawString(OtherStuff.pFTCPriceinUSD, 575, 400);
+					g.drawString(OtherStuff.pFTCPriceinUSD, 575, 400);
 				}else{
-					//g.drawString("Fetching USD Price...", 570, 400);
+					g.drawString("Fetching USD Price...", 570, 400);
 				}
 				
 				if(OtherStuff.pFTCDiff != null && OtherStuff.pFTCDiff != "null"){
-					//g.drawString(OtherStuff.pFTCDiff, 575, 430);
+					g.drawString(OtherStuff.pFTCDiff, 575, 430);
 				}else{
-					//g.drawString("Fetching difficulty...", 570, 430);
+					g.drawString("Fetching difficulty...", 570, 430);
 				}
 				
 						
