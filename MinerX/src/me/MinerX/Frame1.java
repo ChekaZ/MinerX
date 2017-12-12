@@ -20,11 +20,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 
 
 public class Frame1
@@ -100,7 +98,7 @@ extends JFrame
 		choosereuropeone.setEnabled(true);
 		choosereuropeone.setOpaque(false);
 		choosereuropeone.setBackground(Color.WHITE);
-		choosereuropeone.setSelected(false);
+		choosereuropeone.setSelected(true);
 		add(choosereuropeone);
 		
 		chooserchina = new JRadioButton("China",ResourceLoader.Iconload("/checkbox.png"));
@@ -336,14 +334,17 @@ extends JFrame
 					writer.close();
 				}
 
-				try {
 
-					Process process2=Runtime.getRuntime().exec("cmd /c start "+System.getProperty("user.dir")+"\\"+folderpath + "\\mine.bat",
-							null, new File("\"" + System.getProperty("user.dir")+"\"\\"+folderpath));
-					process2.waitFor();
-				} catch (IOException | InterruptedException e1) {
-					e1.printStackTrace();
-				}
+					try {
+						Process p =  Runtime.getRuntime().exec("cmd /c start mine.bat", null, new File("" + System.getProperty("user.dir")+"\\"+folderpath+""));
+						p.waitFor();
+					} catch (InterruptedException | IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					/*Process process2=Runtime.getRuntime().exec("cmd /c start \""+System.getProperty("user.dir")+"\\"+folderpath + "\\mine.bat\"",
+							null, new File("" + System.getProperty("user.dir")+"\\"+folderpath+""));
+					process2.waitFor();*/
 			}
 			if(e.getSource() == PoolInfo)
 			{
