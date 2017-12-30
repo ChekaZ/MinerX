@@ -44,9 +44,8 @@ extends JFrame
 	private JTextField ExperModeField;
 	private JCheckBox ExpertModeCheckBox;
 	private JRadioButton expertamd, experenv;
-	public static final String version = "TestVersion TZC 1.0";
+	public static final String version = "TZC-MinerX Alpha 1.0";
 	public Font ftdefault = new Font("Times New Roman", Font.BOLD, 22);
-	//public Font dogedefault = new Font("Comic Sans MS", Font.BOLD, 18);
 	public Font normal = new Font("Times New Roman", Font.BOLD, 20);
 	
 
@@ -164,22 +163,6 @@ extends JFrame
 		StartMining.setEnabled(false);
 		StartMining.setBounds(253, 346, 300, 125);
 		add(this.StartMining);
-		
-		/*BTCaddress = new JTextField("BTC: 15JCDD3g47KZEKN4qU3YWj75eRP7ru8JAZ");
-		BTCaddress.setBounds(53, 480, 300, 20);
-		BTCaddress.setEditable(false);
-		BTCaddress.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		BTCaddress.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
-		BTCaddress.setBackground(Color.WHITE);
-		add(BTCaddress);
-		
-		FTCaddress = new JTextField("FTC: 6sxjM96KMZ7t4AmDTUKDZdq82Nj931VQvY");
-		FTCaddress.setBounds(454, 480, 300, 20);
-		FTCaddress.setEditable(false);
-		FTCaddress.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		FTCaddress.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
-		FTCaddress.setBackground(Color.WHITE);
-		add(FTCaddress);*/
 
 		setVisible(true);
 		thehandler handler = new thehandler();
@@ -342,9 +325,6 @@ extends JFrame
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					/*Process process2=Runtime.getRuntime().exec("cmd /c start \""+System.getProperty("user.dir")+"\\"+folderpath + "\\mine.bat\"",
-							null, new File("" + System.getProperty("user.dir")+"\\"+folderpath+""));
-					process2.waitFor();*/
 			}
 			if(e.getSource() == PoolInfo)
 			{
